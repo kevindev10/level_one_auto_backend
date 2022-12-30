@@ -21,33 +21,33 @@ app.get('/', (req,res)=>{
 
 
 app.post('/contactUs', async (req,res) =>{
-  // try{
+   try{
      
      
-  //   if(
-  //     req.body.captcha === undefined ||
-  //     req.body.captcha === '' ||
-  //     req.body.captcha === null
-  // ){
-  //     return res.json({"success": false, "msg":"*Please  select the captcha"})
-  // }
+    if(
+      req.body.captcha === undefined ||
+      req.body.captcha === '' ||
+      req.body.captcha === null
+  ){
+      return res.json({"success": false, "msg":"*Please  select the captcha"})
+  }
   //Secret Key
-  // const secretKey = '6LegIIMcAAAAAJ3A4fILYSuC_FJETY_WQF3rSb4j';
+  const secretKey = '6LegIIMcAAAAAJ3A4fILYSuC_FJETY_WQF3rSb4j';
 
   //Veryify URL
-  // const verifyURL = `https://google.com/recaptcha/api/siteverify?secret=${secretKey}&response=${req.body.captcha}&remoteip=${req.socket.remoteAddress}`
+  const verifyURL = `https://google.com/recaptcha/api/siteverify?secret=${secretKey}&response=${req.body.captcha}&remoteip=${req.socket.remoteAddress}`
 
   //Make Request To VerifyURl
-  // const body = await fetch(verifyURL).then(res => res.json());
+  const body = await fetch(verifyURL).then(res => res.json());
 
   // If not successful
-    // if (body.success !== undefined && !body.success)
-    // return res.json({ success: false, msg: 'Failed captcha verification' });
+    if (body.success !== undefined && !body.success)
+    return res.json({ success: false, msg: 'Failed captcha verification' });
 
   // If successful
 
   console.log( req.body )
-  res.json('Good job. Its Working.')
+
 
   // const { email, phone, yourName, message, carTitle, carDescription, carUrl} = req.body;
   // const output = `
@@ -100,13 +100,19 @@ app.post('/contactUs', async (req,res) =>{
   // }
 
   // main().catch(console.error);
-  // return res.json({ success: true, msg: 'Thanks for getting in touch! Expect an answer from us in the next few hours.' });
+
+  
+
+   return res.json({ success: true, msg: 'Thanks for getting in touch! Expect an answer from us in the next few hours.' });
 
 
-  // }
-  // catch (error) {
-  //   console.error(error);
-  // }
+
+
+
+  }
+  catch (error) {
+    console.error(error);
+  }
 
 
 });
