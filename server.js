@@ -46,60 +46,60 @@ app.post('/contactUs', async (req,res) =>{
 
   // If successful
 
-  console.log( req.body )
 
 
-  // const { email, phone, yourName, message, carTitle, carDescription, carUrl} = req.body;
-  // const output = `
-	// 	<p>You have a new message</p>
-	// 	<h3>Website Details</h3>
-	// 	<ul>
 
-  //     <li>Website Type :${websiteType}</li>
-  //     <li>Company Type :${companyType}</li>
-  //     <li>Number of pages :${pages}</li>
-  //     <li>How soon do you need the website? :${ urgency}</li>
-	// 		<li>Your Name :${yourName}</li>
-	// 		<li>Email :${email}</li>
-	// 		<li>Phone :${phone}</li>
-	// 		<h3>Message</h3>
-	// 		<p>${message}</p>
+  const { email, phone, yourName, message, carTitle, carDescription, carUrl} = req.body;
+  const output = `
+		<p>You have a new message</p>
+		<h3>Vehicle Details</h3>
+		<ul>
+
+      <li>Car Make : ${carTitle}</li>
+      <li>Car Description : ${carDescription}</li>
+      <li>Link to Car : ${carUrl}</li>
+     	<li>Your Name : ${yourName}</li>
+			<li>Email : ${email}</li>
+			<li>Phone : ${phone}</li>
+			<h3>Message</h3>
+			<p>${message}</p>
 			
-	// 	</ul>
-	// `;
-  // async function main() {
+		</ul>
+	`;
+
+  async function main() {
 			  
 
-  //   // create reusable transporter object using the default SMTP transport
-  //   let transporter = nodemailer.createTransport({
-  //     host: "mail.flexdevske.co.ke",
-  //     port: 587,
-  //     secure: false, // true for 465, false for other ports
-  //     auth: {
-  //       user: 'sales@flexdevske.co.ke', // generated ethereal user
-  //       pass: 'Achieng*2021', // generated ethereal password
-  //     },
-  //     tls:{
-  //       rejectUnauthorized:false
-  //     }
-  //   });
+    // create reusable transporter object using the default SMTP transport
+    let transporter = nodemailer.createTransport({
+      host: "mail.flexdevske.co.ke",
+      port: 465,
+      secure: true, // true for 465, false for other ports
+      auth: {
+        user: 'sales@flexdevske.co.ke', // generated ethereal user
+        pass: 'Achieng_2021', // generated ethereal password
+      },
+      tls:{
+        rejectUnauthorized:false
+      }
+    });
 
-  //   // send mail with defined transport object
-  //   let info = await transporter.sendMail({
-  //     from: '"Nodemailer Contact" <sales@flexdevske.co.ke>', // sender address
-  //     to: "flexdevske@gmail.com", // list of receivers
-  //     subject: "Website Quotation Request", // Subject line
-  //     text: "Hello world?", // plain text body
-  //     html: output, // html body
-  //   });
+    // send mail with defined transport object
+    let info = await transporter.sendMail({
+      from: '"Nodemailer Contact" <sales@flexdevske.co.ke>', // sender address
+      to: "flexdevske@gmail.com", // list of receivers
+      subject: "Vehicle Enquiry", // Subject line
+      text: "Hello world?", // plain text body
+      html: output, // html body
+    });
 
-  //   console.log("Message sent: %s", info.messageId);
+    console.log("Message sent: %s", info.messageId);
     
-  //   console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
+    console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
     
-  // }
+  }
 
-  // main().catch(console.error);
+  main().catch(console.error);
 
   
 
